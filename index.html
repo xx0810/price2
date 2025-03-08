@@ -44,8 +44,7 @@
             const loader = document.getElementById('loading');
             try {
                 loader.style.display = 'block';
-                const response = await fetch('https://xx0810.github.io/price2/prices.json
-?t=' + Date.now());
+                const response = await fetch('https://your-domain.com/prices.json?t=' + Date.now());
                 if (!response.ok) throw new Error('Network error');
                 globalData = await response.json();
                 populateContinents();
