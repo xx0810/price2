@@ -1,0 +1,217 @@
+{
+    "Asia": {
+        "China": {
+            "硅酸盐水泥": "500-800元/吨 (2024年)",
+            "矿渣粉": "200-400元/吨 (2024年)",
+            "硅灰": "1000-1500元/吨 (2024年)",
+            "石英砂": "100-200元/吨 (2024年)",
+            "聚羧酸系减水剂": "3000-5000元/吨 (2024年)"
+        },
+        "Japan": {
+            "硅酸盐水泥": "800-1200美元/吨 (2024年)",
+            "矿渣粉": "300-600美元/吨 (2024年)",
+            "硅灰": "1500-2500美元/吨 (2024年)",
+            "石英砂": "150-300美元/吨 (2024年)",
+            "聚羧酸系減水剤": "4000-8000美元/トン (2024年)"
+        },
+        "Korea": {
+            "시멘트": "700-1000달러/톤 (2024년)",
+            "슬라그 파우더": "250-500달러/톤 (2024년)",
+            "실리카 시미컨트": "1200-2000달러/톤 (2024년)",
+            " квар츠 모래": "120-250달러/톤 (2024년)",
+            "폴리카르복산계 축약제": "3500-6000달러/톤 (2024년)"
+        },
+        "India": {
+            "Silicate Cement": "300-600$ per ton (2024)",
+            "Slag Powder": "150-350$ per ton (2024)",
+            "Fly Ash": "800-1500$ per ton (2024)",
+            "Quarry Sand": "80-150$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "2500-4500$ per ton (2024)"
+        },
+        "SaudiArabia": {
+            "Silicate Cement": "400-700$ per ton (2024)",
+            "Slag Powder": "200-400$ per ton (2024)",
+            "Fly Ash": "1000-1800$ per ton (2024)",
+            "Quarry Sand": "100-200$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3000-5500$ per ton (2024)"
+        }
+    },
+    "Europe": {
+        "Germany": {
+            "Silicate Cement": "800-1200€ per ton (2024)",
+            "Slag Powder": "300-600€ per ton (2024)",
+            "Fly Ash": "1500-2500€ per ton (2024)",
+            "Quarry Sand": "150-300€ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "4000-8000€ per ton (2024)"
+        },
+        "France": {
+            "Silicate Cement": "750-1100€ per ton (2024)",
+            "Slag Powder": "280-550€ per ton (2024)",
+            "Fly Ash": "1300-2200€ per ton (2024)",
+            "Quarry Sand": "130-280€ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3800-7000€ per ton (2024)"
+        },
+        "UK": {
+            "Silicate Cement": "850-1250£ per ton (2024)",
+            "Slag Powder": "320-620£ per ton (2024)",
+            "Fly Ash": "1600-2600£ per ton (2024)",
+            "Quarry Sand": "160-320£ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "4200-8500£ per ton (2024)"
+        },
+        "Italy": {
+            "Silicate Cement": "700-1050€ per ton (2024)",
+            "Slag Powder": "250-500€ per ton (2024)",
+            "Fly Ash": "1200-2000€ per ton (2024)",
+            "Quarry Sand": "120-250€ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3500-6500€ per ton (2024)"
+        },
+        "Russia": {
+            "Silicate Cement": "400-700$ per ton (2024)",
+            "Slag Powder": "180-400$ per ton (2024)",
+            "Fly Ash": "1000-1800$ per ton (2024)",
+            "Quarry Sand": "100-200$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3000-5500$ per ton (2024)"
+        }
+    },
+    "Africa": {
+        "SouthAfrica": {
+            "Silicate Cement": "400-700$ per ton (2024)",
+            "Slag Powder": "180-400$ per ton (2024)",
+            "Fly Ash": "1000-1800$ per ton (2024)",
+            "Quarry Sand": "100-200$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3000-5500$ per ton (2024)"
+        },
+        "Egypt": {
+            "Silicate Cement": "350-600$ per ton (2024)",
+            "Slag Powder": "150-350$ per ton (2024)",
+            "Fly Ash": "800-1500$ per ton (2024)",
+            "Quarry Sand": "80-150$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "2500-4500$ per ton (2024)"
+        },
+        "Nigeria": {
+            "Silicate Cement": "300-550$ per ton (2024)",
+            "Slag Powder": "130-300$ per ton (2024)",
+            "Fly Ash": "700-1300$ per ton (2024)",
+            "Quarry Sand": "70-130$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "2300-4000$ per ton (2024)"
+        },
+        "Algeria": {
+            "Silicate Cement": "380-650$ per ton (2024)",
+            "Slag Powder": "160-380$ per ton (2024)",
+            "Fly Ash": "900-1600$ per ton (2024)",
+            "Quarry Sand": "90-160$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "2800-5000$ per ton (2024)"
+        },
+        "Morocco": {
+            "Silicate Cement": "320-580$ per ton (2024)",
+            "Slag Powder": "140-320$ per ton (2024)",
+            "Fly Ash": "800-1400$ per ton (2024)",
+            "Quarry Sand": "80-140$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "2500-4800$ per ton (2024)"
+        }
+    },
+    "NorthAmerica": {
+        "USA": {
+            "Silicate Cement": "600-1000$ per ton (2024)",
+            "Slag Powder": "250-550$ per ton (2024)",
+            "Fly Ash": "1200-2000$ per ton (2024)",
+            "Quarry Sand": "120-250$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3500-6500$ per ton (2024)"
+        },
+        "Canada": {
+            "Silicate Cement": "650-1050$ per ton (2024)",
+            "Slag Powder": "280-580$ per ton (2024)",
+            "Fly Ash": "1300-2100$ per ton (2024)",
+            "Quarry Sand": "130-260$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3800-7000$ per ton (2024)"
+        },
+        "Mexico": {
+            "Silicate Cement": "400-750$ per ton (2024)",
+            "Slag Powder": "180-450$ per ton (2024)",
+            "Fly Ash": "1000-1800$ per ton (2024)",
+            "Quarry Sand": "100-220$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3000-5800$ per ton (2024)"
+        },
+        "Cuba": {
+            "Silicate Cement": "300-600$ per ton (2024)",
+            "Slag Powder": "150-350$ per ton (2024)",
+            "Fly Ash": "800-1500$ per ton (2024)",
+            "Quarry Sand": "80-160$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "2500-4500$ per ton (2024)"
+        },
+        "Jamaica": {
+            "Silicate Cement": "350-700$ per ton (2024)",
+            "Slag Powder": "160-380$ per ton (2024)",
+            "Fly Ash": "900-1600$ per ton (2024)",
+            "Quarry Sand": "90-180$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "2800-5000$ per ton (2024)"
+        }
+    },
+    "SouthAmerica": {
+        "Brazil": {
+            "Silicate Cement": "400-700$ per ton (2024)",
+            "Slag Powder": "180-400$ per ton (2024)",
+            "Fly Ash": "1000-1800$ per ton (2024)",
+            "Quarry Sand": "100-200$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3000-5500$ per ton (2024)"
+        },
+        "Argentina": {
+            "Silicate Cement": "350-650$ per ton (2024)",
+            "Slag Powder": "150-350$ per ton (2024)",
+            "Fly Ash": "800-1500$ per ton (2024)",
+            "Quarry Sand": "80-160$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "2500-4500$ per ton (2024)"
+        },
+        "Chile": {
+            "Silicate Cement": "420-750$ per ton (2024)",
+            "Slag Powder": "190-420$ per ton (2024)",
+            "Fly Ash": "1050-1850$ per ton (2024)",
+            "Quarry Sand": "105-210$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3200-5800$ per ton (2024)"
+        },
+        "Colombia": {
+            "Silicate Cement": "380-700$ per ton (2024)",
+            "Slag Powder": "170-380$ per ton (2024)",
+            "Fly Ash": "950-1650$ per ton (2024)",
+            "Quarry Sand": "95-180$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3000-5500$ per ton (2024)"
+        },
+        "Peru": {
+            "Silicate Cement": "350-680$ per ton (2024)",
+            "Slag Powder": "160-360$ per ton (2024)",
+            "Fly Ash": "900-1600$ per ton (2024)",
+            "Quarry Sand": "90-170$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "2800-5300$ per ton (2024)"
+        }
+    },
+    "Oceania": {
+        "Australia": {
+            "Silicate Cement": "600-1000AUD per ton (2024)",
+            "Slag Powder": "250-550AUD per ton (2024)",
+            "Fly Ash": "1200-2000AUD per ton (2024)",
+            "Quarry Sand": "120-250AUD per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3500-6500AUD per ton (2024)"
+        },
+        "NewZealand": {
+            "Silicate Cement": "650-1050NZD per ton (2024)",
+            "Slag Powder": "280-580NZD per ton (2024)",
+            "Fly Ash": "1300-2100NZD per ton (2024)",
+            "Quarry Sand": "130-260NZD per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3800-7000NZD per ton (2024)"
+        },
+        "PapuaNewGuinea": {
+            "Silicate Cement": "400-800$ per ton (2024)",
+            "Slag Powder": "180-400$ per ton (2024)",
+            "Fly Ash": "1000-1800$ per ton (2024)",
+            "Quarry Sand": "100-200$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3000-5500$ per ton (2024)"
+        },
+        "Fiji": {
+            "Silicate Cement": "450-850$ per ton (2024)",
+            "Slag Powder": "200-450$ per ton (2024)",
+            "Fly Ash": "1000-1800$ per ton (2024)",
+            "Quarry Sand": "100-200$ per ton (2024)",
+            "Polycarboxylate Superplasticizer": "3000-5500$ per ton (2024)"
+        }
+    }
+}
