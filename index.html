@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UHPC Global Price System</title>
+    <title>UHPC全球价格系统</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; display: flex; background-color: #f9f9f9; }
         .sidebar { width: 30%; background: white; padding: 20px; height: 100vh; box-shadow: 2px 0 5px rgba(0,0,0,0.1); }
@@ -14,9 +14,12 @@
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background: #f2f2f2; }
-        button { padding: 10px 15px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px; }
+        button { padding: 10px 15px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
         button:hover { background: #0056b3; }
         #loading { display: none; color: #666; padding: 10px; }
+        .auth-box { position: absolute; top: 10px; right: 20px; }
+        .nav-bar { margin-bottom: 20px; }
+        input { padding: 8px; margin: 5px; border: 1px solid #ddd; border-radius: 4px; }
         @media (max-width: 768px) {
             body { flex-direction: column; }
             .sidebar, .content { width: 100%; margin-left: 0; }
@@ -24,38 +27,202 @@
     </style>
 </head>
 <body>
+    <div class="auth-box" id="authSection"></div>
+    
     <div class="sidebar">
-        <div id="loading">Loading prices...</div>
-        <h2>Select Continent</h2>
+        <div id="loading">数据加载中...</div>
+        <h2>选择大洲</h2>
         <ul id="continents-list"></ul>
         <div id="countries-list"></div>
     </div>
     
     <div class="content" id="material-prices">
-        <h1>UHPC Global Material Finder</h1>
-        <p><strong>Ultra-High Performance Concrete (UHPC)</strong> is a revolutionary material with ultra-high strength and durability...</p>
-        <!-- 保持完整介绍内容 -->
+        <div class="nav-bar" id="navBar"></div>
+        <div id="mainContent">
+            <h1>UHPC全球材料价格系统</h1>
+            <p><strong>超高性能混凝土(UHPC)</strong>是一种具有超高强度、耐久性和韧性的革命性建筑材料...</p>
+        </div>
     </div>
 
     <script>
+        // 系统状态
         let globalData = {};
-        
-        async function fetchData() {
-            const loader = document.getElementById('loading');
-            try {
-                loader.style.display = 'block';
-                const response = await fetch('https://your-domain.com/prices.json?t=' + Date.now());
-                if (!response.ok) throw new Error('Network error');
-                globalData = await response.json();
-                populateContinents();
-            } catch (e) {
-                console.error(e);
-                alert('Failed to load prices. Please refresh.');
-            } finally {
-                loader.style.display = 'none';
+        let currentUser = null;
+
+        // 认证系统
+        function renderAuthSection() {
+            const container = document.getElementById('authSection');
+            if(currentUser) {
+                container.innerHTML = `
+                    <span>欢迎，${currentUser.name}</span>
+                    <button onclick="logout()">退出</button>
+                    <button onclick="location.hash='#favorites'">我的收藏</button>
+                `;
+            } else {
+                container.innerHTML = `
+                    <button onclick="location.hash='#login'">登录</button>
+                    <button onclick="location.hash='#register'">注册</button>
+                `;
             }
         }
 
+        // 用户注册
+        function registerUser(name, email, password) {
+            const users = JSON.parse(localStorage.getItem('users') || []);
+            if(users.some(u => u.email === email)) {
+                alert('该邮箱已注册');
+                return false;
+            }
+            users.push({ name, email, password, favorites: [] });
+            localStorage.setItem('users', JSON.stringify(users));
+            return true;
+        }
+
+        // 用户登录
+        function loginUser(email, password) {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            if(user) {
+                currentUser = user;
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                return true;
+            }
+            return false;
+        }
+
+        // 登出
+        function logout() {
+            currentUser = null;
+            sessionStorage.removeItem('currentUser');
+            location.hash = '';
+            renderAuthSection();
+            renderMainContent();
+        }
+
+        // 收藏功能
+        function toggleFavorite(country, material) {
+            const users = JSON.parse(localStorage.getItem('users'));
+            const userIndex = users.findIndex(u => u.email === currentUser.email);
+            
+            const favIndex = users[userIndex].favorites.findIndex(f => 
+                f.country === country && f.material === material
+            );
+
+            if(favIndex === -1) {
+                users[userIndex].favorites.push({ country, material });
+            } else {
+                users[userIndex].favorites.splice(favIndex, 1);
+            }
+
+            localStorage.setItem('users', JSON.stringify(users));
+            sessionStorage.setItem('currentUser', JSON.stringify(users[userIndex]));
+            currentUser = users[userIndex];
+        }
+
+        // 路由系统
+        function handleHashChange() {
+            const mainContent = document.getElementById('mainContent');
+            switch(location.hash) {
+                case '#register':
+                    mainContent.innerHTML = `
+                        <h2>注册新用户</h2>
+                        <input type="text" id="regName" placeholder="姓名">
+                        <input type="email" id="regEmail" placeholder="邮箱">
+                        <input type="password" id="regPassword" placeholder="密码">
+                        <button onclick="handleRegister()">注册</button>
+                        <button onclick="location.hash=''">返回</button>
+                    `;
+                    break;
+                case '#login':
+                    mainContent.innerHTML = `
+                        <h2>用户登录</h2>
+                        <input type="email" id="loginEmail" placeholder="邮箱">
+                        <input type="password" id="loginPassword" placeholder="密码">
+                        <button onclick="handleLogin()">登录</button>
+                        <button onclick="location.hash=''">返回</button>
+                    `;
+                    break;
+                case '#favorites':
+                    renderFavorites();
+                    break;
+                default:
+                    renderMainContent();
+            }
+        }
+
+        // 页面渲染
+        function renderMainContent() {
+            document.getElementById('mainContent').innerHTML = `
+                <h1>UHPC全球材料价格系统</h1>
+                <p><strong>超高性能混凝土(UHPC)</strong>是一种具有超高强度、耐久性和韧性的革命性建筑材料...</p>
+            `;
+        }
+
+        function renderFavorites() {
+            const mainContent = document.getElementById('mainContent');
+            if(!currentUser) {
+                mainContent.innerHTML = `<p>请先登录查看收藏</p>`;
+                return;
+            }
+
+            let content = `<h2>我的收藏</h2><table><tr><th>国家</th><th>材料</th><th>操作</th></tr>`;
+            currentUser.favorites.forEach(fav => {
+                content += `
+                    <tr>
+                        <td>${fav.country}</td>
+                        <td>${fav.material}</td>
+                        <td><button onclick="toggleFavorite('${fav.country}', '${fav.material}')">取消收藏</button></td>
+                    </tr>
+                `;
+            });
+            content += `</table><button onclick="location.hash=''">返回首页</button>`;
+            mainContent.innerHTML = content;
+        }
+
+        // 事件处理
+        function handleRegister() {
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            
+            if(registerUser(name, email, password)) {
+                alert('注册成功，请登录');
+                location.hash = '#login';
+            }
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if(loginUser(email, password)) {
+                renderAuthSection();
+                location.hash = '';
+            } else {
+                alert('登录失败，请检查凭证');
+            }
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 恢复登录状态
+            currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            renderAuthSection();
+            
+            // 价格数据加载
+            fetch('https://xx0810.github.io/price2/prices.json')
+                .then(res => res.json())
+                .then(data => {
+                    globalData = data;
+                    populateContinents();
+                });
+
+            // 路由监听
+            window.addEventListener('hashchange', handleHashChange);
+            handleHashChange();
+        });
+
+        // 原有价格系统功能
         function populateContinents() {
             const list = document.getElementById('continents-list');
             list.innerHTML = '';
@@ -69,7 +236,7 @@
 
         function showCountries(continent) {
             const container = document.getElementById('countries-list');
-            container.innerHTML = `<h2>Select Country</h2><ul id="country-list"></ul>`;
+            container.innerHTML = `<h2>选择国家/地区</h2><ul id="country-list"></ul>`;
             const list = document.getElementById('country-list');
             Object.keys(globalData[continent]).forEach(country => {
                 const li = document.createElement('li');
@@ -80,32 +247,32 @@
         }
 
         function showPrices(continent, country) {
-            const container = document.getElementById('material-prices');
-            container.innerHTML = `
-                <button onclick="showIntro()">Back</button>
+            const container = document.getElementById('mainContent');
+            let tableContent = `
                 <h1>${country}</h1>
                 <table>
-                    <thead><tr><th>Material</th><th>Price</th></tr></thead>
-                    <tbody>
-                        ${Object.entries(globalData[continent][country]).map(([mat, price]) => `
-                            <tr><td>${mat}</td><td>${price}</td></tr>
-                        `).join('')}
+                    <thead><tr><th>材料名称</th><th>价格范围</th><th>操作</th></tr></thead>
+                    <tbody>`;
+
+            Object.entries(globalData[continent][country]).forEach(([mat, price]) => {
+                tableContent += `
+                    <tr>
+                        <td>${mat}</td>
+                        <td>${price}</td>
+                        <td>
+                            ${currentUser ? `
+                            <button onclick="toggleFavorite('${country}', '${mat}')">
+                                ${currentUser.favorites.some(f => f.country === country && f.material === mat) ? '★ 已收藏' : '☆ 收藏'}
+                            </button>` : ''}
+                        </td>
+                    </tr>`;
+            });
+
+            container.innerHTML = tableContent + `
                     </tbody>
                 </table>
-            `;
+                <button onclick="location.hash=''">返回首页</button>`;
         }
-
-        function showIntro() {
-            document.getElementById('material-prices').innerHTML = `
-                <h1>UHPC Global Material Finder</h1>
-                <!-- 保持完整介绍内容 -->
-            `;
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchData();
-            setInterval(fetchData, 300000); // 5分钟更新
-        });
     </script>
 </body>
 </html>
